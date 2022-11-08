@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import {
   Button,
   Card,
@@ -7,33 +8,39 @@ import {
   Typography,
 } from '@mui/material';
 
-export default function Products() {
-  return (
-    <>
-      <h1 style={{ textAlign: 'center' }}>Products</h1>
-      <Card sx={{ maxWidth: 345 }}>
+function Products(props) {
+  let listProducts = props.products.displayedProducts.map((el, idx) => {
+    return (
+      <Card key={idx} sx={{ maxWidth: 345 }}>
         <CardMedia
           component={'img'}
-          alt={'pikachu'}
+          alt={el.name}
           height={'140'}
-          image={'https://assets.puzzlefactory.pl/puzzle/254/191/original.jpg'}
+          image={el.image}
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component={'div'}>
-            Pikachu
+            {el.name}
           </Typography>
-          <Typography>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo eius
-            voluptatem porro, dolore suscipit iusto quibusdam veritatis, fuga
-            sunt voluptates rerum nisi doloremque itaque, praesentium
-            accusantium modi eaque repudiandae minus!
-          </Typography>
+          <Typography>{el.description}</Typography>
         </CardContent>
         <CardActions>
           <Button>Add to Cart</Button>
           <Button>View Details</Button>
         </CardActions>
       </Card>
+    );
+  });
+  return (
+    <>
+      <h1 style={{ textAlign: 'center' }}>Products</h1>
+      <div style={{ display: 'flex' }}>{listProducts}</div>
     </>
   );
 }
+
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
+
+export default connect(mapStateToProps)(Products);

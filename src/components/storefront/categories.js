@@ -1,20 +1,17 @@
 import { Button } from '@mui/material';
 import { connect } from 'react-redux';
 import { changeActiveCategory } from '../../store/categories';
+import { filterProduct } from '../../store/products';
 
 function Categories(props) {
-  // console.log(props);
-  // let { displayName, description } = props.category.listCategories.filter(
-  //   (val, idx) => {
-  //     return val.normalizedName === props.category.activeCategory;
-  //   }
-  // )[0];
-  let categorylist = props.categories.listCategories.map((el, idx) => {
-    // console.log(el.normalizedName);
+  let categoryList = props.categories.listCategories.map((el, idx) => {
     return (
       <Button
         key={idx}
-        onClick={() => props.changeActiveCategory(el.normalizedName)}
+        onClick={() => {
+          props.changeActiveCategory(el.normalizedName);
+          props.filterProduct(el.normalizedName);
+        }}
       >
         {el.displayName}
       </Button>
@@ -24,10 +21,7 @@ function Categories(props) {
   return (
     <div style={{ padding: '30px' }}>
       <h2>Category</h2>
-      <span>
-        {/* <Button>Electronic</Button>|<Button>food</Button> */}
-        {categorylist}
-      </span>
+      <span>{categoryList}</span>
     </div>
   );
 }
@@ -38,6 +32,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   changeActiveCategory,
+  filterProduct,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
