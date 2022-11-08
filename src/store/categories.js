@@ -2,8 +2,8 @@ const initialState = {
   activeCategory: 'pokemon',
   listCategories: [
     {
-      normalizedName: 'electronics',
-      displayName: 'Electronics',
+      normalizedName: 'electronic',
+      displayName: 'Electronic',
       description: 'Electronic stuff and things',
     },
     {
