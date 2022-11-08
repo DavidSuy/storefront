@@ -1,71 +1,85 @@
-# Getting Started with Create React App
+# Store Front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A store front of our store selling products like food and electronic.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Our application will power an online storefront that will allow our users to browse our product offerings by category, place items in their shopping cart, and check-out when they are ready to make their purchase.
 
-### `npm start`
+## Getting started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Deployed site
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- URL
 
-### `npm test`
+### Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- react
+- redux
+- material UI
 
-### `npm run build`
+### Installing
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+      npm i
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Executing Program
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      npm start
 
-### `npm run eject`
+## Authors
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+David Suy
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Business Requirements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The core requirements and functionality are as follows:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Display a list of our product categories
+- Display a listing of products for each category, when the category is selected
+- From the product listings:
+  - Click to view a full detail page about the product
+  - Add the product to your shopping cart
+- Shopping cart (simple version) always visible on screen
+- Full shopping cart and check out screen available from main navigation
 
-## Learn More
+## Technical Requirements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React
+- ES6 Classes
+- Redux Store for Application State
+- Deployed API with MongoDB storage for storing categories and products
+- Superagent or Axios for performing API Requests
+- Material UI for layout and styling
+- Test Driven Development, using Jest
+- Deployment to a cloud provider (Netlify, Amplify, or GitHub Pages)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## UML
 
-### Code Splitting
+![UML](src/img/uml.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Development Process, Milestones
 
-### Analyzing the Bundle Size
+Phase 1: Application Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Basic React Application
+- Redux State Management
+- State managed in memory
+- Material UI Components & Styling
 
-### Making a Progressive Web App
+Phase 2: Shopping Cart
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Add items to a shopping cart
+- Update quantities
+- Remove items from the cart
+- Show the cart in real-time on the UI
 
-### Advanced Configuration
+Phase 3: Live Data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Connect the application a live API
+- Persist changes to products based on cart activity.
 
-### Deployment
+Phase 4: Checkout & Detail Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# storefront
+- Refactor the store to use the latest Redux design pattern (Redux Toolkit)
+- Add a cart checkout page
+- Add a product details page
