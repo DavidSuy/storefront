@@ -1,4 +1,5 @@
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cart';
 import {
   Button,
   Card,
@@ -9,7 +10,9 @@ import {
 } from '@mui/material';
 
 function Products(props) {
-  let listProducts = props.products.displayedProducts.map((el, idx) => {
+  let dispatch = useDispatch();
+  let products = useSelector((state) => state.products);
+  let listProducts = products.displayedProducts.map((el, idx) => {
     return (
       <Card key={idx} sx={{ maxWidth: 345 }}>
         <CardMedia
@@ -25,7 +28,7 @@ function Products(props) {
           <Typography>{el.description}</Typography>
         </CardContent>
         <CardActions>
-          <Button>Add to Cart</Button>
+          <Button onClick={() => dispatch(addToCart(el))}>Add to Cart</Button>
           <Button>View Details</Button>
         </CardActions>
       </Card>
@@ -39,8 +42,4 @@ function Products(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  products: state.products,
-});
-
-export default connect(mapStateToProps)(Products);
+export default Products;
