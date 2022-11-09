@@ -75,6 +75,17 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        products: state.products.map((product) => {
+          if (product.name === action.payload.name) {
+            product.count = product.count - 1;
+          }
+
+          return product;
+        }),
+      };
     default:
       return { ...state };
   }
