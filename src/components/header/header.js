@@ -7,13 +7,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { connect, useSelector } from 'react-redux';
 
 function Header(props) {
-  // let cart = useSelector((state) => state.cart);
-  // useEffect(() => {
-  //   console.log('change');
-  //   // cart = useSelector((state) => state.cart)
-  // }, [cart]);
-  console.log(props.cart);
-
   return (
     <AppBar position='static'>
       <Toolbar>

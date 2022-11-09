@@ -24,10 +24,11 @@ function addToCart(payload) {
 function cartReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_TO_CART':
-      state.products.push(action.payload);
-      ++state.total;
-      console.log(state);
-      return state;
+      return {
+        ...state,
+        total: state.total + 1,
+        products: [...state.products, action.payload],
+      };
     default:
       return state;
   }
