@@ -1,17 +1,7 @@
 const initialState = {
   show: true,
-  total: 1,
-  products: [
-    {
-      category: 'pokemon',
-      name: 'gengar',
-      description: 'Ghost pokemon',
-      price: 90000,
-      count: 1,
-      image:
-        'https://archives.bulbagarden.net/media/upload/thumb/c/c6/094Gengar.png/250px-094Gengar.png',
-    },
-  ],
+  total: 0,
+  products: [],
 };
 
 function addToCart(payload) {
