@@ -1,22 +1,8 @@
+import axios from 'axios';
+
 const initialState = {
-  activeCategory: 'pokemon',
-  listCategories: [
-    {
-      normalizedName: 'electronic',
-      displayName: 'Electronic',
-      description: 'Electronic stuff and things',
-    },
-    {
-      normalizedName: 'food',
-      displayName: 'Food',
-      description: 'Food things',
-    },
-    {
-      normalizedName: 'pokemon',
-      displayName: 'Pokemon',
-      description: 'Pokemon, Gota Catch em all',
-    },
-  ],
+  activeCategory: '',
+  listCategories: [],
 };
 
 // action
@@ -27,6 +13,20 @@ export const changeActiveCategory = (payload) => {
   };
 };
 
+export const getCategoriesApi = () => async (dispatch) => {
+  let res = await axios.get(
+    'https://api-js401.herokuapp.com/api/v1/categories'
+  );
+  dispatch(getInitialCategories(res.data.results));
+};
+
+export const getInitialCategories = (payload) => {
+  return {
+    type: 'GET_INITIAL_CATEGORIES',
+    payload,
+  };
+};
+
 //reducer
 const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -34,6 +34,11 @@ const categoryReducer = (state = initialState, action) => {
       state.activeCategory = action.payload;
       return {
         ...state,
+      };
+    case 'GET_INITIAL_CATEGORIES':
+      return {
+        ...state,
+        listCategories: [...action.payload],
       };
     default:
       return { ...state };

@@ -1,8 +1,9 @@
+import axios from 'axios';
 const initialState = {
   displayedProducts: [],
   products: [
     {
-      category: 'electronic',
+      category: 'electronics',
       name: 'toaster',
       description: 'Device to toast bread',
       price: 50,
@@ -11,7 +12,7 @@ const initialState = {
         'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6519/6519437_sd.jpg',
     },
     {
-      category: 'electronic',
+      category: 'electronics',
       name: 'tv',
       description: 'A screen with moving pictures',
       price: 700,
@@ -65,8 +66,26 @@ export const filterProduct = (payload) => {
   };
 };
 
+export const initialProducts = (payload) => {
+  return {
+    type: 'INITIAL_PRODUCTS',
+    payload,
+  };
+};
+
+export const getProductApi = () => async (dispatch) => {
+  let res = await axios.get('https://api-js401.herokuapp.com/api/v1/products');
+  dispatch(initialProducts(res.data.results));
+};
+
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'INITIAL_PRODUCTS':
+      return {
+        ...state,
+        products: [...action.payload],
+      };
+
     case 'FILTER_PRODUCT':
       let newDisplayProducts = state.products.filter(
         (el) => el.category === action.payload
